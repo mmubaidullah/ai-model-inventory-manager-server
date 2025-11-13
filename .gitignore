@@ -3,4 +3,3 @@ node_modules
 ai-model-inventory-service-key.json
 .user
 serviceAccountKey.json
-index.js
