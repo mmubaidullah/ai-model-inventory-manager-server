@@ -8,7 +8,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // ---middleware---
-
 app.use(cors());
 app.use(express.json());
 
@@ -168,7 +167,6 @@ async function run() {
     });
 
     // ---search and filter---
-
     app.get("/search", async (req, res) => {
       const search_text = req.query.search || "";
       const framework = req.query.framework || "";
@@ -186,7 +184,6 @@ async function run() {
     });
 
     // -------------
-
     await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
@@ -204,3 +201,4 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+//-----------------------------------------------------
