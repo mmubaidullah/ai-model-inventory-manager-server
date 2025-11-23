@@ -5,7 +5,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const admin = require("firebase-admin");
 
 const app = express();
-const port = process.env.PORT || 3010;
+const port = process.env.PORT || 3000;
 
 // ---middleware---
 
@@ -42,7 +42,8 @@ const verifyFBToken = async (req, res, next) => {
 };
 
 // --------------------
-const uri = `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(process.env.DB_PASS)}@cluster0.18hxmkc.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.n1ywsso.mongodb.net/?appName=Cluster0";
+// const uri = "mongodb+srv://model-db:jwXIBxDFCphqfoRo@cluster0.n1ywsso.mongodb.net/?appName=Cluster0`;
 
 const client = new MongoClient(uri, {
   serverApi: {
