@@ -197,7 +197,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("Ai Model Inventory Server is running");
+  res.send("Ai-Model-Inventory-Server is running");
 });
 
 app.listen(port, () => {
