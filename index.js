@@ -13,12 +13,11 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+const decoded = Buffer.from(process.env.FIREBASE_PRIVATE_KEY, "base64").toString("utf8");
+const serviceAccount = JSON.parse(decoded);
+
 admin.initializeApp({
-  credential: admin.credential.cert({
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-    privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
-  }),
+  credential: admin.credential.cert(serviceAccount)
 });
 
 const verifyFBToken = async (req, res, next) => {
@@ -186,7 +185,7 @@ async function run() {
     });
 
     // -------------
-    await client.db("admin").command({ ping: 1 });
+    // await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
